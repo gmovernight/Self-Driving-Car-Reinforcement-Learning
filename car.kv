@@ -1,0 +1,65 @@
+# ---- Car (Python-defined) ----
+<Car>:
+  size: 20, 10
+  canvas:
+    PushMatrix
+    Rotate:
+      angle: self.angle
+      origin: self.center
+    Color:
+      rgba: 0.2, 0.6, 1, 1
+    Rectangle:
+      pos: self.pos
+      size: self.size
+    PopMatrix
+
+# ---- Lightweight sensor dots (KV-defined) ----
+<Ball1@Widget>:
+  size: 10, 10
+  canvas:
+    Color:
+      rgba: 1, 0.3, 0.3, 1
+    Ellipse:
+      pos: self.pos
+      size: self.size
+
+<Ball2@Widget>:
+  size: 10, 10
+  canvas:
+    Color:
+      rgba: 0.3, 1, 0.3, 1
+    Ellipse:
+      pos: self.pos
+      size: self.size
+
+<Ball3@Widget>:
+  size: 10, 10
+  canvas:
+    Color:
+      rgba: 0.3, 0.3, 1, 1
+    Ellipse:
+      pos: self.pos
+      size: self.size
+
+# ---- Game layout rule (applied when Python creates Game()) ----
+<Game>:
+  car: game_car
+  ball1: game_ball1
+  ball2: game_ball2
+  ball3: game_ball3
+
+  Car:
+    id: game_car
+    center: self.parent.center
+
+  Ball1:
+    id: game_ball1
+    center: self.parent.center
+
+  Ball2:
+    id: game_ball2
+    center: self.parent.center
+
+  Ball3:
+    id: game_ball3
+    center: self.parent.center
